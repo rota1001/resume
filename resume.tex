@@ -1,0 +1,126 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,filecolor=blue]{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbset{colframe=blue!60!black,colback=blue!8,boxrule=0.9pt,arc=2pt,boxsep=1pt,left=4pt,right=4pt,top=2pt,bottom=2pt}
+\newtcbox{\tagbox}{on line, nobeforeafter, tcbox raise 0pt}
+
+\setlist[itemize]{noitemsep, topsep=3pt, left=0pt}
+\setlength{\parindent}{0pt}
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[t]{0.62\linewidth}
+  {\LARGE\bfseries CHI-SHENG CHEN}\\[4pt]
+  {\small\scshape Embedded System Developer}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.36\linewidth}
+  \raggedright
+  {\footnotesize Phone: +886-979-931-001}\\[2pt]
+  {\footnotesize Email: \href{mailto:johnny1001s000602@gmail.com}{johnny1001s000602@gmail.com}}\\[2pt]
+  {\footnotesize GitHub: \href{https://github.com/rota1001}{rota1001}}
+\end{minipage}
+
+
+\section*{Education}
+\vspace{-15pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-6pt}
+\subsection*{National Cheng Kung University (Sep 2023 -- Jun 2027)}
+\begin{itemize}
+  \item B.S. in Computer Science and Engineering
+  \item Academic Excellence Award (\textbf{Top 5\%} for 3 semesters)
+  \item Relevant Coursework: Operating System, Linux Kernel Design, Algorithms, Data Structures
+\end{itemize}
+
+\section*{Competitions}
+\vspace{-15pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-6pt}
+\subsection*{Programming Contests}
+\begin{itemize}
+  \item 2025 ICPC Taichung Regional --- Bronze Medal
+  \item 2025 Asia Taiwan Online Programming Contest --- Silver Medal
+  \item 2024 ICPC Taichung Regional --- Bronze Medal
+  \item 2024 National Collegiate Programming Contest --- 4th Place Award
+  \item 2024 Asia Taiwan Online Programming Contest --- Silver Medal
+\end{itemize}
+
+\subsection*{CTF Contests (Security)}
+\begin{itemize}
+  \item HITCON CTF 2025 Quals --- Ranked 2nd (Taiwan) / Ranked 22nd (Global), write-up\hyperlink{l1}{[1]}
+  \item Crypto CTF 2025 --- Ranked 38th (Solo, Global), write-up\hyperlink{l2}{[2]}
+\end{itemize}
+
+\section*{Side Projects}
+\vspace{-15pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-6pt}
+\subsection*{Bare-metal Operating System for STM32F103}
+
+\vspace{4pt}
+Description: A preemptive multitasking OS running on STM32F103 without the STM32 HAL.
+
+\vspace{4pt}
+\noindent{\small\textbf{Links:} Github\hyperlink{l3}{[3]}\ \ Hackmd\hyperlink{l4}{[4]}}
+
+\begin{itemize}
+  \item Reduced instruction fetch latency by executing the kernel entirely in SRAM
+  \item Implemented \textbf{privilege separation} between kernel and user tasks
+  \item Built a \textbf{preemptive scheduler} supporting round-robin scheduling and \textbf{cooperative yielding}
+  \item Implemented context switch using \textbf{setjmp/longjmp}
+  \item Designed syscall mechanism scheduled as kernel tasks instead of running in handler mode
+  \item Implemented UART with \textbf{memory-mapped I/O}
+\end{itemize}
+
+\subsection*{Linux Kernel Instrumentation Framework (HITCON 2025)}
+
+\vspace{4pt}
+Description: Kernel module for dynamic instrumentation capable of intercepting kernel execution paths \textbf{without kallsyms or kprobes}. Presented at \emph{HITCON 2025}.
+
+\vspace{4pt}
+\noindent{\small\textbf{Links:} Github\hyperlink{l5}{[5]}\ \ Hackmd\hyperlink{l6}{[6]}}
+
+\begin{itemize}
+  \item Inspected and modified \textbf{procfs} file operations by parsing its internal tree structure
+  \item Resolved syscall function addresses by analyzing the \textbf{syscall handler} in the Linux kernel (without relying on exported syscall table)
+  \item Performed runtime kernel patching via \textbf{PTE flag manipulation}
+  \item Achieved process concealment by manipulating the internal \textbf{PID hash} structure used by the scheduler
+  \item Patched the \textbf{ELF header and entry point} to embed a minimal payload that invokes the kernel's module-loading syscall during systemd startup
+\end{itemize}
+
+\subsection*{Microcomputer with Custom OS and Peripheral Integration}
+
+\vspace{4pt}
+Description: Built a microcomputer using PIC18F microcontroller integrating keyboard, SRAM, UART, and USB storage.
+\vspace{4pt}
+
+\noindent{\small\textbf{Links:} Github\hyperlink{l7}{[7]}\ \ Hackmd\hyperlink{l8}{[8]}}
+
+\begin{itemize}
+  \item Developed \textbf{USB Host driver} for CH375 supporting \textbf{HID keyboard} and USB flash drive
+  \item Built external memory interface enabling \textbf{1-byte-per-instruction} block access using \textbf{only an 8-bit GPIO} with latch/counter/D-trigger, using a \textbf{logic analyzer} to debug hardware timing
+  \item Implemented \textbf{DMA mechanism} using 512KB SRAM as disk cache
+\end{itemize}
+
+\vspace{6pt}
+\section*{Presentation}
+\vspace{-15pt}\noindent\rule{\linewidth}{0.6pt}\vspace{5pt}
+\begin{itemize}
+  \item HITCON 2025 --- \emph{A Kernel Rootkit That Works Without Kallsyms}\hyperlink{l9}{[9]}
+\end{itemize}
+
+\section*{Links}
+\vspace{-10pt}\noindent\rule{\linewidth}{0.6pt}\vspace{4pt}
+\begin{enumerate}[label={[\arabic*]},left=0pt,topsep=2pt,itemsep=2pt,parsep=0pt]
+  \item \hypertarget{l1}{\href{https://hackmd.io/@rota1001/hitcon-ctf-quals-2025}{\nolinkurl{https://hackmd.io/@rota1001/hitcon-ctf-quals-2025}}}
+  \item \hypertarget{l2}{\href{https://hackmd.io/@rota1001/crypto-ctf-2025}{\nolinkurl{https://hackmd.io/@rota1001/crypto-ctf-2025}}}
+  \item \hypertarget{l3}{\href{https://github.com/rota1001/arm-os-101}{\nolinkurl{https://github.com/rota1001/arm-os-101}}}
+  \item \hypertarget{l4}{\href{https://hackmd.io/@rota1001/stm32-os}{\nolinkurl{https://hackmd.io/@rota1001/stm32-os}}}
+  \item \hypertarget{l5}{\href{https://github.com/rota1001/ksymless}{\nolinkurl{https://github.com/rota1001/ksymless}}}
+  \item \hypertarget{l6}{\href{https://hackmd.io/@sysprog/r1l3i4_Zge}{\nolinkurl{https://hackmd.io/@sysprog/r1l3i4_Zge}}}
+  \item \hypertarget{l7}{\href{https://github.com/beautiful-fruit/picos}{\nolinkurl{https://github.com/beautiful-fruit/picos}}}
+  \item \hypertarget{l8}{\href{https://hackmd.io/@weiso131/picos}{\nolinkurl{https://hackmd.io/@weiso131/picos}}}
+  \item \hypertarget{l9}{\href{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}{\nolinkurl{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}}}
+\end{enumerate}
+
+\end{document}
