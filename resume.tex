@@ -26,14 +26,12 @@
   {\footnotesize GitHub: \href{https://github.com/rota1001}{rota1001}}
 \end{minipage}
 
-
 \section*{Education}
 \vspace{-15pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-6pt}
 \subsection*{National Cheng Kung University (Sep 2023 -- Jun 2027)}
 \begin{itemize}
   \item B.S. in Computer Science and Engineering
-  \item Academic Excellence Award (\textbf{Top 5\%} for 3 semesters)
-  \item Relevant Coursework: Operating System, Linux Kernel Design, Algorithms, Data Structures
+  \item Academic Excellence Award (\textbf{Top 5\%} for 3 semesters, \textbf{GPA 4.26})
 \end{itemize}
 
 \section*{Competitions}
@@ -55,25 +53,23 @@
 
 \section*{Side Projects}
 \vspace{-15pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-6pt}
-\subsection*{Bare-metal Operating System for STM32F103}
 
+\subsection*{Porting DOOM to STM32H750}
 \vspace{4pt}
-Description: A preemptive multitasking OS running on STM32F103 without the STM32 HAL.
+Description: Run 3D game on STM32H750 with \textbf{only 1MB SRAM} and \textbf{without STM32 HAL}.
 
 \vspace{4pt}
 \noindent{\small\textbf{Links:} Github\hyperlink{l3}{[3]}\ \ Hackmd\hyperlink{l4}{[4]}}
 
 \begin{itemize}
-  \item Reduced instruction fetch latency by executing the kernel entirely in SRAM
-  \item Implemented \textbf{privilege separation} between kernel and user tasks
-  \item Built a \textbf{preemptive scheduler} supporting round-robin scheduling and \textbf{cooperative yielding}
-  \item Implemented context switch using \textbf{setjmp/longjmp}
-  \item Designed syscall mechanism scheduled as kernel tasks instead of running in handler mode
-  \item Implemented UART with \textbf{memory-mapped I/O}
+  \item Pure register-level programming
+  \item Used \textbf{LTDC} and DAC to output 640x480@64Hz \textbf{VGA} signal with only 320x200 bytes framebuffer
+  \item XIP code execution on \textbf{QSPI} external flash
+  \item Modified the memory management system to support non-contiguous memory allocation in DOOM
+  \item Implemented libc support for DOOM
 \end{itemize}
 
 \subsection*{Linux Kernel Instrumentation Framework (HITCON 2025)}
-
 \vspace{4pt}
 Description: Kernel module for dynamic instrumentation capable of intercepting kernel execution paths \textbf{without kallsyms or kprobes}. Presented at \emph{HITCON 2025}.
 
@@ -82,31 +78,64 @@ Description: Kernel module for dynamic instrumentation capable of intercepting k
 
 \begin{itemize}
   \item Inspected and modified \textbf{procfs} file operations by parsing its internal tree structure
-  \item Resolved syscall function addresses by analyzing the \textbf{syscall handler} in the Linux kernel (without relying on exported syscall table)
+  \item Resolved syscall function addresses by dynamically analyzing the \textbf{syscall handler} in the Linux kernel (without relying on exported syscall table)
   \item Performed runtime kernel patching via \textbf{PTE flag manipulation}
   \item Achieved process concealment by manipulating the internal \textbf{PID hash} structure used by the scheduler
   \item Patched the \textbf{ELF header and entry point} to embed a minimal payload that invokes the kernel's module-loading syscall during systemd startup
 \end{itemize}
 
-\subsection*{Microcomputer with Custom OS and Peripheral Integration}
+\subsection*{Operating System running on STM32F103}
+\vspace{4pt}
+Description: A preemptive multitasking OS running on STM32F103 without the STM32 HAL.
 
 \vspace{4pt}
-Description: Built a microcomputer using PIC18F microcontroller integrating keyboard, SRAM, UART, and USB storage.
-\vspace{4pt}
-
 \noindent{\small\textbf{Links:} Github\hyperlink{l7}{[7]}\ \ Hackmd\hyperlink{l8}{[8]}}
 
 \begin{itemize}
+  \item Reduced instruction fetch latency by executing the kernel entirely in SRAM
+  \item Implemented \textbf{privilege separation} between kernel and user tasks with control register
+  \item Built a \textbf{preemptive scheduler} supporting round-robin scheduling and \textbf{cooperative yielding}
+  \item Implemented context switch using \textbf{setjmp/longjmp}
+  \item Designed syscall mechanism scheduled as kernel tasks instead of running in handler mode
+\end{itemize}
+
+\subsection*{Microcomputer with Custom OS and Peripheral Integration}
+\vspace{4pt}
+Description: Built a microcomputer using PIC18F microcontroller integrating keyboard, SRAM, UART, and USB storage.
+
+\vspace{4pt}
+\noindent{\small\textbf{Links:} Github\hyperlink{l9}{[9]}\ \ Hackmd\hyperlink{l10}{[10]}}
+
+\begin{itemize}
   \item Developed \textbf{USB Host driver} for CH375 supporting \textbf{HID keyboard} and USB flash drive
-  \item Built external memory interface enabling \textbf{1-byte-per-instruction} block access using \textbf{only an 8-bit GPIO} with latch/counter/D-trigger, using a \textbf{logic analyzer} to debug hardware timing
+  \item Built external memory interface enabling \textbf{1-byte-per-instruction} block access using \textbf{only an 8-bit GPIO} with latch/counter/D-trigger
   \item Implemented \textbf{DMA mechanism} using 512KB SRAM as disk cache
 \end{itemize}
+
+\subsection*{Porting Linux to STM32H750 (Boot and Scheduler Validated)}
+\vspace{4pt}
+Description: Port Linux to a microcontroller with only 1MB SRAM
+
+\vspace{4pt}
+\noindent{\small\textbf{Links:} Github\hyperlink{l11}{[11]}\ \ Hackmd\hyperlink{l12}{[12]}}
+\vspace{4pt}
+
+This is an on going project with the following components completed:
+
+\begin{itemize}
+  \item Developed a \textbf{QEMU SoC model} with a core peripheral subset (only UART and Memory) for early-stage verification and debugging.
+  \item Developed a \textbf{minimal bootloader (only 12KB)} to load the linux kernel
+  \item Reduced Linux kernel .bss and .data usage to 100KB via a config based on tinyconfig
+  \item Used \textbf{SPARSEMEM memory model} to utilize non-contiguous memory regions
+  \item Successfully booted and started scheduling but hasn't run any init program
+\end{itemize}
+
 
 \vspace{6pt}
 \section*{Presentation}
 \vspace{-15pt}\noindent\rule{\linewidth}{0.6pt}\vspace{5pt}
 \begin{itemize}
-  \item HITCON 2025 --- \emph{A Kernel Rootkit That Works Without Kallsyms}\hyperlink{l9}{[9]}
+  \item HITCON 2025 --- \emph{A Kernel Rootkit That Works Without Kallsyms}\hyperlink{l13}{[13]}
 \end{itemize}
 
 \section*{Links}
@@ -114,13 +143,18 @@ Description: Built a microcomputer using PIC18F microcontroller integrating keyb
 \begin{enumerate}[label={[\arabic*]},left=0pt,topsep=2pt,itemsep=2pt,parsep=0pt]
   \item \hypertarget{l1}{\href{https://hackmd.io/@rota1001/hitcon-ctf-quals-2025}{\nolinkurl{https://hackmd.io/@rota1001/hitcon-ctf-quals-2025}}}
   \item \hypertarget{l2}{\href{https://hackmd.io/@rota1001/crypto-ctf-2025}{\nolinkurl{https://hackmd.io/@rota1001/crypto-ctf-2025}}}
-  \item \hypertarget{l3}{\href{https://github.com/rota1001/arm-os-101}{\nolinkurl{https://github.com/rota1001/arm-os-101}}}
-  \item \hypertarget{l4}{\href{https://hackmd.io/@rota1001/stm32-os}{\nolinkurl{https://hackmd.io/@rota1001/stm32-os}}}
+  \item \hypertarget{l3}{\href{https://github.com/rota1001/stm32h7-baremetal-doom}{\nolinkurl{https://github.com/rota1001/stm32h7-baremetal-doom}}}
+  \item \hypertarget{l4}{\href{https://hackmd.io/@rota1001/stm32-doom}{\nolinkurl{https://hackmd.io/@rota1001/stm32-doom}}}
   \item \hypertarget{l5}{\href{https://github.com/rota1001/ksymless}{\nolinkurl{https://github.com/rota1001/ksymless}}}
   \item \hypertarget{l6}{\href{https://hackmd.io/@sysprog/r1l3i4_Zge}{\nolinkurl{https://hackmd.io/@sysprog/r1l3i4_Zge}}}
-  \item \hypertarget{l7}{\href{https://github.com/beautiful-fruit/picos}{\nolinkurl{https://github.com/beautiful-fruit/picos}}}
-  \item \hypertarget{l8}{\href{https://hackmd.io/@weiso131/picos}{\nolinkurl{https://hackmd.io/@weiso131/picos}}}
-  \item \hypertarget{l9}{\href{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}{\nolinkurl{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}}}
+
+  \item \hypertarget{l7}{\href{https://github.com/rota1001/arm-os-101}{\nolinkurl{https://github.com/rota1001/arm-os-101}}}
+  \item \hypertarget{l8}{\href{https://hackmd.io/@rota1001/stm32-os}{\nolinkurl{https://hackmd.io/@rota1001/stm32-os}}}
+  \item \hypertarget{l9}{\href{https://github.com/beautiful-fruit/picos}{\nolinkurl{https://github.com/beautiful-fruit/picos}}}
+  \item \hypertarget{l10}{\href{https://hackmd.io/@weiso131/picos}{\nolinkurl{https://hackmd.io/@weiso131/picos}}}
+  \item \hypertarget{l11}{\href{https://github.com/rota1001/stm32h7-linux}{\nolinkurl{https://github.com/rota1001/stm32h7-linux}}}
+  \item \hypertarget{l12}{\href{https://hackmd.io/@rota1001/stm32h750-linux}{\nolinkurl{https://hackmd.io/@rota1001/stm32h750-linux}}}
+  \item \hypertarget{l13}{\href{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}{\nolinkurl{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}}}
 \end{enumerate}
 
 \end{document}
