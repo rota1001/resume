@@ -1,33 +1,39 @@
 \documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
+\usepackage[top=0.6in,bottom=0.6in,left=0.5in,right=0.5in]{geometry}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,filecolor=blue]{hyperref}
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{tcolorbox}
+\usepackage{titlesec}
+\usepackage{microtype}
 \tcbset{colframe=blue!60!black,colback=blue!8,boxrule=0.9pt,arc=2pt,boxsep=1pt,left=4pt,right=4pt,top=2pt,bottom=2pt}
 \newtcbox{\tagbox}{on line, nobeforeafter, tcbox raise 0pt}
 
-\setlist[itemize]{noitemsep, topsep=3pt, left=0pt}
+\setlist[itemize]{noitemsep, topsep=3pt, left=0pt, parsep=1pt}
+\setlist[enumerate]{noitemsep, topsep=3pt, parsep=1pt}
 \setlength{\parindent}{0pt}
 \renewcommand{\familydefault}{\sfdefault}
+
+\titlespacing*{\section}{0pt}{12pt}{0pt}
+\titlespacing*{\subsection}{0pt}{8pt}{2pt}
 
 \begin{document}
 
 \noindent
 \begin{minipage}[t]{0.62\linewidth}
-  {\LARGE\bfseries CHI-SHENG CHEN}\\[4pt]
+  {\LARGE\bfseries CHI-SHENG CHEN}\\[3pt]
   {\small\scshape Embedded System Developer}
 \end{minipage}%
 \hfill
 \begin{minipage}[t]{0.36\linewidth}
   \raggedright
-  {\footnotesize Phone: +886-979-931-001}\\[2pt]
-  {\footnotesize Email: \href{mailto:johnny1001s000602@gmail.com}{johnny1001s000602@gmail.com}}\\[2pt]
+  {\footnotesize Phone: +886-979-931-001}\\[1pt]
+  {\footnotesize Email: \href{mailto:johnny1001s000602@gmail.com}{johnny1001s000602@gmail.com}}\\[1pt]
   {\footnotesize GitHub: \href{https://github.com/rota1001}{rota1001}}
 \end{minipage}
 
 \section*{Education}
-\vspace{-15pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-6pt}
+\vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-1pt}
 \subsection*{National Cheng Kung University (Sep 2023 -- Jun 2027)}
 \begin{itemize}
   \item B.S. in Computer Science and Engineering
@@ -35,7 +41,7 @@
 \end{itemize}
 
 \section*{Competitions}
-\vspace{-15pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-6pt}
+\vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-1pt}
 \subsection*{Programming Contests}
 \begin{itemize}
   \item 2025 ICPC Taichung Regional --- Bronze Medal
@@ -52,35 +58,29 @@
 \end{itemize}
 
 \section*{Side Projects}
-\vspace{-15pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-6pt}
+\vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-1pt}
 
 \subsection*{Run Linux 6.19 on STM32H750 (Cortex-M7, no-MMU)}
-\vspace{4pt}
-Description: Run \textbf{Linux 6.19} on a microcontroller with only \textbf{1MB SRAM}
-
-\vspace{4pt}
-\noindent{\small\textbf{Links:} Github\hyperlink{l3}{[3]}\ \ Hackmd\hyperlink{l4}{[4]}}
-\vspace{4pt}
-
+\vspace{1pt}
+Description: Run \textbf{Linux 6.19} on a microcontroller with only \textbf{1MB SRAM}\\
+{\small\textbf{Links:} Github\hyperlink{l3}{[3]}\ \ Hackmd\hyperlink{l4}{[4]}}
 
 \begin{itemize}
-  \item Developed a \textbf{QEMU SoC model} with a core peripheral subset (UART, Memory Mapping, Timer), enabling \textbf{kernel debugging via GDB}
+  \item Developed a \textbf{QEMU SoC model} with a core peripheral subset (UART, Memory Mapping, Timer), enabling \textbf{kernel debug via GDB}
   \item Developed a \textbf{minimal bootloader (only 12KB)} to load the linux kernel
   \item Reduced Linux kernel .bss and .data usage to 100KB via custom kernel config
   \item Used \textbf{SPARSEMEM memory model} to utilize non-contiguous memory regions
   \item Used \textbf{romfs} to keep rootFS in flash
   \item \textbf{uClibc-ng} and toolchain integration for the portability of user program
-  \item Used \textbf{bFLT} instead of ELF executables to run without virtual memory support (no-MMU).
+  \item Used \textbf{bFLT} instead of ELF executables to run it without virtual memory support (no-MMU)
   \item User programs are \textbf{executed in place}, not using any RAM for text segment
   \item Linux kernel was successfully booted and run \textbf{toybox}, which is a lightweight busybox
 \end{itemize}
 
 \subsection*{Linux Kernel Instrumentation Framework (HITCON 2025)}
-\vspace{4pt}
-Description: Kernel module for dynamic instrumentation capable of intercepting kernel execution paths \textbf{without kallsyms or kprobes}. Presented at \emph{HITCON 2025}.
-
-\vspace{4pt}
-\noindent{\small\textbf{Links:} Github\hyperlink{l5}{[5]}\ \ Hackmd\hyperlink{l6}{[6]}}
+\vspace{1pt}
+Description: Kernel module for dynamic instrumentation capable of intercepting kernel execution paths \textbf{without kallsyms or kprobes}. Presented at \emph{HITCON 2025}.\\
+{\small\textbf{Links:} Github\hyperlink{l5}{[5]}\ \ Hackmd\hyperlink{l6}{[6]}}
 
 \begin{itemize}
   \item Inspected and modified \textbf{procfs} file operations by parsing its internal tree structure
@@ -90,12 +90,10 @@ Description: Kernel module for dynamic instrumentation capable of intercepting k
   \item Patched the \textbf{ELF header and entry point} to embed a minimal payload that invokes the kernel's module-loading syscall during systemd startup
 \end{itemize}
 
-\subsection*{Port DOOM to STM32H750}
-\vspace{4pt}
-Description: Run 3D game on STM32H750 with \textbf{only 1MB SRAM} and \textbf{without STM32 HAL}.
-
-\vspace{4pt}
-\noindent{\small\textbf{Links:} Github\hyperlink{l7}{[7]}\ \ Hackmd\hyperlink{l8}{[8]}}
+\subsection*{Port DOOM to STM32H750 (SITCON 2026)}
+\vspace{1pt}
+Description: Run 3D game on STM32H750 with \textbf{only 1MB SRAM} and \textbf{without STM32 HAL}.\\
+{\small\textbf{Links:} Github\hyperlink{l7}{[7]}\ \ Hackmd\hyperlink{l8}{[8]}}
 
 \begin{itemize}
   \item Pure register-level programming
@@ -106,11 +104,9 @@ Description: Run 3D game on STM32H750 with \textbf{only 1MB SRAM} and \textbf{wi
 \end{itemize}
 
 \subsection*{Operating System running on STM32F103}
-\vspace{4pt}
-Description: A preemptive multitasking OS running on STM32F103 without the STM32 HAL.
-
-\vspace{4pt}
-\noindent{\small\textbf{Links:} Github\hyperlink{l9}{[9]}\ \ Hackmd\hyperlink{l10}{[10]}}
+\vspace{1pt}
+Description: A preemptive multitasking OS running on STM32F103 without the STM32 HAL.\\
+{\small\textbf{Links:} Github\hyperlink{l9}{[9]}\ \ Hackmd\hyperlink{l10}{[10]}}
 
 \begin{itemize}
   \item Reduced instruction fetch latency by executing the kernel entirely in SRAM
@@ -121,11 +117,9 @@ Description: A preemptive multitasking OS running on STM32F103 without the STM32
 \end{itemize}
 
 \subsection*{Microcomputer with Custom OS and Peripheral Integration}
-\vspace{4pt}
-Description: Built a microcomputer using PIC18F microcontroller integrating keyboard, SRAM, UART, and USB storage.
-
-\vspace{4pt}
-\noindent{\small\textbf{Links:} Github\hyperlink{l11}{[11]}\ \ Hackmd\hyperlink{l12}{[12]}}
+\vspace{1pt}
+Description: Built a microcomputer using PIC18F integrating keyboard, SRAM, UART, and USB storage.\\
+{\small\textbf{Links:} Github\hyperlink{l11}{[11]}\ \ Hackmd\hyperlink{l12}{[12]}}
 
 \begin{itemize}
   \item Developed \textbf{USB Host driver} for CH375 supporting \textbf{HID keyboard} and USB flash drive
@@ -133,18 +127,16 @@ Description: Built a microcomputer using PIC18F microcontroller integrating keyb
   \item Implemented \textbf{DMA mechanism} using 512KB SRAM as disk cache
 \end{itemize}
 
-
-\vspace{6pt}
 \section*{Presentation}
-\vspace{-15pt}\noindent\rule{\linewidth}{0.6pt}\vspace{5pt}
+\vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{3pt}
 \begin{itemize}
   \item HITCON 2025 --- \emph{A Kernel Rootkit That Works Without Kallsyms}\hyperlink{l13}{[13]}
   \item SITCON 2026 --- \emph{STM32 Bare-metal DOOM Challenge (Up Coming)}\hyperlink{l14}{[14]}
 \end{itemize}
 
 \section*{Links}
-\vspace{-10pt}\noindent\rule{\linewidth}{0.6pt}\vspace{4pt}
-\begin{enumerate}[label={[\arabic*]},left=0pt,topsep=2pt,itemsep=2pt,parsep=0pt]
+\vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{2pt}
+\begin{enumerate}[label={[\arabic*]},left=0pt,topsep=1pt,itemsep=1pt,parsep=0pt]
   \item \hypertarget{l1}{\href{https://hackmd.io/@rota1001/hitcon-ctf-quals-2025}{\nolinkurl{https://hackmd.io/@rota1001/hitcon-ctf-quals-2025}}}
   \item \hypertarget{l2}{\href{https://hackmd.io/@rota1001/crypto-ctf-2025}{\nolinkurl{https://hackmd.io/@rota1001/crypto-ctf-2025}}}
   \item \hypertarget{l3}{\href{https://github.com/rota1001/stm32h7-linux}{\nolinkurl{https://github.com/rota1001/stm32h7-linux}}}
