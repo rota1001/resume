@@ -54,19 +54,25 @@
 \section*{Side Projects}
 \vspace{-15pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-6pt}
 
-\subsection*{Porting DOOM to STM32H750}
+\subsection*{Run Linux 6.19 on STM32H750 (Cortex-M7, no-MMU)}
 \vspace{4pt}
-Description: Run 3D game on STM32H750 with \textbf{only 1MB SRAM} and \textbf{without STM32 HAL}.
+Description: Run \textbf{Linux 6.19} on a microcontroller with only \textbf{1MB SRAM}
 
 \vspace{4pt}
 \noindent{\small\textbf{Links:} Github\hyperlink{l3}{[3]}\ \ Hackmd\hyperlink{l4}{[4]}}
+\vspace{4pt}
+
 
 \begin{itemize}
-  \item Pure register-level programming
-  \item Used \textbf{LTDC} and DAC to output 640x480@64Hz \textbf{VGA} signal with only 320x200 bytes framebuffer
-  \item XIP code execution on \textbf{QSPI} external flash
-  \item Modified the memory management system to support non-contiguous memory allocation in DOOM
-  \item Implemented libc support for DOOM
+  \item Developed a \textbf{QEMU SoC model} with a core peripheral subset (UART, Memory Mapping, Timer), enabling \textbf{kernel debugging via GDB}
+  \item Developed a \textbf{minimal bootloader (only 12KB)} to load the linux kernel
+  \item Reduced Linux kernel .bss and .data usage to 100KB via custom kernel config
+  \item Used \textbf{SPARSEMEM memory model} to utilize non-contiguous memory regions
+  \item Used \textbf{romfs} to keep rootFS in flash
+  \item \textbf{uClibc-ng} and toolchain integration for the portability of user program
+  \item Used \textbf{bFLT} instead of ELF executables to run without virtual memory support (no-MMU).
+  \item User programs are \textbf{executed in place}, not using any RAM for text segment
+  \item Linux kernel was successfully booted and run \textbf{toybox}, which is a lightweight busybox
 \end{itemize}
 
 \subsection*{Linux Kernel Instrumentation Framework (HITCON 2025)}
@@ -84,12 +90,27 @@ Description: Kernel module for dynamic instrumentation capable of intercepting k
   \item Patched the \textbf{ELF header and entry point} to embed a minimal payload that invokes the kernel's module-loading syscall during systemd startup
 \end{itemize}
 
+\subsection*{Port DOOM to STM32H750}
+\vspace{4pt}
+Description: Run 3D game on STM32H750 with \textbf{only 1MB SRAM} and \textbf{without STM32 HAL}.
+
+\vspace{4pt}
+\noindent{\small\textbf{Links:} Github\hyperlink{l7}{[7]}\ \ Hackmd\hyperlink{l8}{[8]}}
+
+\begin{itemize}
+  \item Pure register-level programming
+  \item Used \textbf{LTDC} and DAC to output 640x480@64Hz \textbf{VGA} signal with only 320x200 bytes framebuffer
+  \item XIP code execution on \textbf{QSPI} external flash
+  \item Modified the memory management system to support non-contiguous memory allocation in DOOM
+  \item Implemented libc support for DOOM
+\end{itemize}
+
 \subsection*{Operating System running on STM32F103}
 \vspace{4pt}
 Description: A preemptive multitasking OS running on STM32F103 without the STM32 HAL.
 
 \vspace{4pt}
-\noindent{\small\textbf{Links:} Github\hyperlink{l7}{[7]}\ \ Hackmd\hyperlink{l8}{[8]}}
+\noindent{\small\textbf{Links:} Github\hyperlink{l9}{[9]}\ \ Hackmd\hyperlink{l10}{[10]}}
 
 \begin{itemize}
   \item Reduced instruction fetch latency by executing the kernel entirely in SRAM
@@ -104,30 +125,12 @@ Description: A preemptive multitasking OS running on STM32F103 without the STM32
 Description: Built a microcomputer using PIC18F microcontroller integrating keyboard, SRAM, UART, and USB storage.
 
 \vspace{4pt}
-\noindent{\small\textbf{Links:} Github\hyperlink{l9}{[9]}\ \ Hackmd\hyperlink{l10}{[10]}}
+\noindent{\small\textbf{Links:} Github\hyperlink{l11}{[11]}\ \ Hackmd\hyperlink{l12}{[12]}}
 
 \begin{itemize}
   \item Developed \textbf{USB Host driver} for CH375 supporting \textbf{HID keyboard} and USB flash drive
   \item Built external memory interface enabling \textbf{1-byte-per-instruction} block access using \textbf{only an 8-bit GPIO} with latch/counter/D-trigger
   \item Implemented \textbf{DMA mechanism} using 512KB SRAM as disk cache
-\end{itemize}
-
-\subsection*{Porting Linux to STM32H750 (Boot and Scheduler Validated)}
-\vspace{4pt}
-Description: Port Linux to a microcontroller with only 1MB SRAM
-
-\vspace{4pt}
-\noindent{\small\textbf{Links:} Github\hyperlink{l11}{[11]}\ \ Hackmd\hyperlink{l12}{[12]}}
-\vspace{4pt}
-
-This is an on going project with the following components completed:
-
-\begin{itemize}
-  \item Developed a \textbf{QEMU SoC model} with a core peripheral subset (only UART and Memory) for early-stage verification and debugging.
-  \item Developed a \textbf{minimal bootloader (only 12KB)} to load the linux kernel
-  \item Reduced Linux kernel .bss and .data usage to 100KB via a config based on tinyconfig
-  \item Used \textbf{SPARSEMEM memory model} to utilize non-contiguous memory regions
-  \item Successfully booted and started scheduling but hasn't run any init program
 \end{itemize}
 
 
@@ -136,6 +139,7 @@ This is an on going project with the following components completed:
 \vspace{-15pt}\noindent\rule{\linewidth}{0.6pt}\vspace{5pt}
 \begin{itemize}
   \item HITCON 2025 --- \emph{A Kernel Rootkit That Works Without Kallsyms}\hyperlink{l13}{[13]}
+  \item SITCON 2026 --- \emph{STM32 Bare-metal DOOM Challenge (Up Coming)}\hyperlink{l14}{[14]}
 \end{itemize}
 
 \section*{Links}
@@ -143,18 +147,18 @@ This is an on going project with the following components completed:
 \begin{enumerate}[label={[\arabic*]},left=0pt,topsep=2pt,itemsep=2pt,parsep=0pt]
   \item \hypertarget{l1}{\href{https://hackmd.io/@rota1001/hitcon-ctf-quals-2025}{\nolinkurl{https://hackmd.io/@rota1001/hitcon-ctf-quals-2025}}}
   \item \hypertarget{l2}{\href{https://hackmd.io/@rota1001/crypto-ctf-2025}{\nolinkurl{https://hackmd.io/@rota1001/crypto-ctf-2025}}}
-  \item \hypertarget{l3}{\href{https://github.com/rota1001/stm32h7-baremetal-doom}{\nolinkurl{https://github.com/rota1001/stm32h7-baremetal-doom}}}
-  \item \hypertarget{l4}{\href{https://hackmd.io/@rota1001/stm32-doom}{\nolinkurl{https://hackmd.io/@rota1001/stm32-doom}}}
+  \item \hypertarget{l3}{\href{https://github.com/rota1001/stm32h7-linux}{\nolinkurl{https://github.com/rota1001/stm32h7-linux}}}
+  \item \hypertarget{l4}{\href{https://hackmd.io/@rota1001/stm32h750-linux}{\nolinkurl{https://hackmd.io/@rota1001/stm32h750-linux}}}
   \item \hypertarget{l5}{\href{https://github.com/rota1001/ksymless}{\nolinkurl{https://github.com/rota1001/ksymless}}}
   \item \hypertarget{l6}{\href{https://hackmd.io/@sysprog/r1l3i4_Zge}{\nolinkurl{https://hackmd.io/@sysprog/r1l3i4_Zge}}}
-
-  \item \hypertarget{l7}{\href{https://github.com/rota1001/arm-os-101}{\nolinkurl{https://github.com/rota1001/arm-os-101}}}
-  \item \hypertarget{l8}{\href{https://hackmd.io/@rota1001/stm32-os}{\nolinkurl{https://hackmd.io/@rota1001/stm32-os}}}
-  \item \hypertarget{l9}{\href{https://github.com/beautiful-fruit/picos}{\nolinkurl{https://github.com/beautiful-fruit/picos}}}
-  \item \hypertarget{l10}{\href{https://hackmd.io/@weiso131/picos}{\nolinkurl{https://hackmd.io/@weiso131/picos}}}
-  \item \hypertarget{l11}{\href{https://github.com/rota1001/stm32h7-linux}{\nolinkurl{https://github.com/rota1001/stm32h7-linux}}}
-  \item \hypertarget{l12}{\href{https://hackmd.io/@rota1001/stm32h750-linux}{\nolinkurl{https://hackmd.io/@rota1001/stm32h750-linux}}}
+  \item \hypertarget{l7}{\href{https://github.com/rota1001/stm32h7-baremetal-doom}{\nolinkurl{https://github.com/rota1001/stm32h7-baremetal-doom}}}
+  \item \hypertarget{l8}{\href{https://hackmd.io/@rota1001/stm32-doom}{\nolinkurl{https://hackmd.io/@rota1001/stm32-doom}}}
+  \item \hypertarget{l9}{\href{https://github.com/rota1001/arm-os-101}{\nolinkurl{https://github.com/rota1001/arm-os-101}}}
+  \item \hypertarget{l10}{\href{https://hackmd.io/@rota1001/stm32-os}{\nolinkurl{https://hackmd.io/@rota1001/stm32-os}}}
+  \item \hypertarget{l11}{\href{https://github.com/beautiful-fruit/picos}{\nolinkurl{https://github.com/beautiful-fruit/picos}}}
+  \item \hypertarget{l12}{\href{https://hackmd.io/@weiso131/picos}{\nolinkurl{https://hackmd.io/@weiso131/picos}}}
   \item \hypertarget{l13}{\href{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}{\nolinkurl{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}}}
+  \item \hypertarget{l14}{\href{https://sitcon.org/2026/agenda/91836d}{\nolinkurl{https://sitcon.org/2026/agenda/91836d}}}
 \end{enumerate}
 
 \end{document}
