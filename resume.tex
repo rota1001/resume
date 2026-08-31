@@ -37,7 +37,15 @@
 \subsection*{National Cheng Kung University (Sep 2023 -- Jun 2027)}
 \begin{itemize}
   \item B.S. in Computer Science and Engineering
-  \item Academic Excellence Award (\textbf{Top 5\%} for 3 semesters, \textbf{GPA 4.26})
+  \item Academic Excellence Award (\textbf{1st} x 3, \textbf{Top 5\%} x 4, \textbf{GPA 4.28})
+\end{itemize}
+
+\section*{Experience}
+\vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-1pt}
+\subsection*{Google Software Engineering Intern - x86 Platform SW Team (Jun 2026 - Sep 2026)}
+\begin{itemize}
+  \item Reduced boot time by \textbf{16.5\%} by improving the \textbf{PCIe} memory resource allocation strategy in \textbf{EDK2}
+  \item Implemented \textbf{DXE and PEI drivers} in EDK2 and IPMI OEM command on \textbf{BMC}
 \end{itemize}
 
 \section*{Competitions}
@@ -45,10 +53,7 @@
 \subsection*{Programming Contests}
 \begin{itemize}
   \item 2025 ICPC Taichung Regional --- Bronze Medal
-  \item 2025 Asia Taiwan Online Programming Contest --- Silver Medal
   \item 2024 ICPC Taichung Regional --- Bronze Medal
-  \item 2024 National Collegiate Programming Contest --- 4th Place Award
-  \item 2024 Asia Taiwan Online Programming Contest --- Silver Medal
 \end{itemize}
 
 \subsection*{CTF Contests (Security)}
@@ -57,69 +62,71 @@
   \item Crypto CTF 2025 --- Ranked 38th (Solo, Global), write-up\hyperlink{l2}{[2]}
 \end{itemize}
 
+\section*{Presentations}
+\vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{3pt}
+\begin{itemize}
+  \item Embedded Linux Conference North America 2026 --- \emph{Optimize Linux Kernel to Fit Microcontroller with 1MB RAM}\hyperlink{l3}{[3]}
+  \item HITCON 2025 --- \emph{A Kernel Rootkit That Works Without Kallsyms}\hyperlink{l4}{[4]}
+  \item SITCON 2026 --- \emph{STM32 Bare-metal DOOM Challenge}\hyperlink{l5}{[5]}
+\end{itemize}
+
 \section*{Side Projects}
 \vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-1pt}
 
-\subsection*{Run Linux 6.19 on STM32H750 (Cortex-M7, no-MMU)}
+\subsection*{Run Linux 7.0 on STM32H750 (Cortex-M7, no-MMU, 1MiB SRAM)}
 \vspace{1pt}
-Description: Run \textbf{Linux 6.19} on a microcontroller with only \textbf{1MB SRAM}\\
-{\small\textbf{Links:} Github\hyperlink{l3}{[3]}\ \ Hackmd\hyperlink{l4}{[4]}}
+Description: Run \textbf{Linux 7.0} on a microcontroller with only \textbf{1MiB SRAM}\\
+{\small\textbf{Links:} Github\hyperlink{l6}{[6]}\ \ Hackmd\hyperlink{l7}{[7]}}
 
 \begin{itemize}
-  \item Developed a \textbf{QEMU SoC model} with a core peripheral subset (UART, Memory Mapping, Timer), enabling \textbf{kernel debug via GDB}
-  \item Developed a \textbf{minimal bootloader (only 12KB)} to load the Linux kernel
-  \item Reduced Linux kernel .bss and .data usage to 100KB via custom kernel config
-  \item Used \textbf{SPARSEMEM memory model} to utilize non-contiguous memory regions
-  \item Used \textbf{romfs} to keep rootfs in flash
-  \item \textbf{uClibc-ng} and toolchain integration for the portability of user program
-  \item Used \textbf{bFLT} instead of ELF executables to run it without virtual memory support (no-MMU)
-  \item User programs are \textbf{executed in place}, not using any RAM for text segment
-  \item Linux kernel was successfully booted and run \textbf{toybox}, which is a lightweight busybox
+  \item Developed a \textbf{QEMU SoC model}, enabling kernel debugging and memory profiling
+  \item Integrated a minimal Linux system consisting of a \textbf{bootloader}, \textbf{romfs}, \textbf{uClibc-ng}, and \textbf{BusyBox}
+  \item Booted the Linux kernel to BusyBox while retaining \textbf{256 KiB of free RAM}
+  \item Configured user programs in \textbf{FDPIC} format for \textbf{Execute-in-Place (XIP)}, consuming zero RAM for the text segment
 \end{itemize}
 
-\subsection*{Linux Kernel Instrumentation Framework (HITCON 2025)}
+\subsection*{A Feature-Rich Linux integration on STM32F429 (Cortex-M4, no-MMU, 8MiB SDRAM)}
 \vspace{1pt}
-Description: Kernel module for dynamic instrumentation capable of intercepting kernel execution paths \textbf{without kallsyms or kprobes}. Presented at \emph{HITCON 2025}.\\
-{\small\textbf{Links:} Github\hyperlink{l5}{[5]}\ \ Hackmd\hyperlink{l6}{[6]}}
-
+Description: Integrate a Linux system capable of running a \textbf{cellphone prototype} with \textbf{8MiB SDRAM} and \textbf{2MiB Flash}\\
+{\small\textbf{Links:} Github\hyperlink{l8}{[8]}\ \ Hackmd\hyperlink{l9}{[9]}}
 \begin{itemize}
-  \item Inspected and modified \textbf{procfs} file operations by parsing its internal tree structure
-  \item Resolved syscall function addresses by dynamically analyzing the \textbf{syscall handler} in the Linux kernel (without relying on exported syscall table)
-  \item Performed runtime kernel patching via \textbf{PTE flag manipulation}
-  \item Achieved process concealment by manipulating the internal \textbf{PID hash} structure used by the scheduler
-  \item Patched the \textbf{ELF header and entry point} to embed a minimal payload that invokes the kernel's module-loading syscall during systemd startup
+  \item Integrated a minimal Linux system consisting of a \textbf{bootloader}, \textbf{romfs}, \textbf{rootfs (ext2)}, \textbf{uClibc-ng}, and \textbf{BusyBox}
+  \item Tuned kernel configurations to enable \textbf{LCD}, \textbf{MMC}, \textbf{I2C}, and \textbf{SPI} drivers
+  \item Leveraged \textbf{tslib} with the Linux \textbf{input subsystem} to enable touchscreen support
+  \item Deployed the \textbf{LVGL} graphics library on \textbf{DRM}
+  \item Ported an interactive cellphone UI prototype featuring touch gestures and a swipe-to-type virtual keyboard
 \end{itemize}
 
 \subsection*{Port DOOM to STM32H750 (SITCON 2026)}
 \vspace{1pt}
 Description: Run 3D game on STM32H750 with \textbf{only 1MB SRAM} and \textbf{without STM32 HAL}.\\
-{\small\textbf{Links:} Github\hyperlink{l7}{[7]}\ \ Hackmd\hyperlink{l8}{[8]}}
+{\small\textbf{Links:} Github\hyperlink{l10}{[10]}\ \ Hackmd\hyperlink{l11}{[11]}}
 
 \begin{itemize}
-  \item Pure register-level programming
+  \item Pure register-level programming using \textbf{MMIO}
   \item Used \textbf{LTDC} and DAC to output 640x480@64Hz \textbf{VGA} signal with only 320x200 bytes framebuffer
   \item XIP code execution on \textbf{QSPI} external flash
   \item Modified the memory management system to support non-contiguous memory allocation in DOOM
   \item Implemented libc support for DOOM
 \end{itemize}
 
-\subsection*{Operating System running on STM32F103}
+\subsection*{Linux Kernel Instrumentation Framework (HITCON 2025)}
 \vspace{1pt}
-Description: A preemptive multitasking OS running on STM32F103 without the STM32 HAL.\\
-{\small\textbf{Links:} Github\hyperlink{l9}{[9]}\ \ Hackmd\hyperlink{l10}{[10]}}
+Description: Kernel module for intercepting kernel execution paths \textbf{without kallsyms or kprobes}. Presented at \emph{HITCON 2025}.\\
+{\small\textbf{Links:} Github\hyperlink{l12}{[12]}\ \ Hackmd\hyperlink{l13}{[13]}}
 
 \begin{itemize}
-  \item Reduced instruction fetch latency by executing the kernel entirely in SRAM
-  \item Implemented \textbf{privilege separation} between kernel and user tasks with control register
-  \item Built a \textbf{preemptive scheduler} supporting round-robin scheduling and \textbf{cooperative yielding}
-  \item Implemented context switch using \textbf{setjmp/longjmp}
-  \item Designed syscall mechanism scheduled as kernel tasks instead of running in handler mode
+  \item Inspected and modified \textbf{procfs} file operations by parsing its internal tree structure
+  \item Resolved syscall function addresses by analyzing the \textbf{syscall handler} without relying on exported syscall table
+  \item Performed runtime kernel patching
+  \item Achieved process concealment by manipulating the internal \textbf{PID hash} structure used by the scheduler
+  \item Perform \textbf{ELF injection} to load the kernel module during systemd startup
 \end{itemize}
 
 \subsection*{Microcomputer with Custom OS and Peripheral Integration}
 \vspace{1pt}
-Description: Built a microcomputer using PIC18F integrating keyboard, SRAM, UART, and USB storage.\\
-{\small\textbf{Links:} Github\hyperlink{l11}{[11]}\ \ Hackmd\hyperlink{l12}{[12]}}
+Description: Built a microcomputer on the bread board using PIC18F integrating keyboard, SRAM, UART, and USB storage.\\
+{\small\textbf{Links:} Github\hyperlink{l14}{[14]}\ \ Hackmd\hyperlink{l15}{[15]}}
 
 \begin{itemize}
   \item Developed \textbf{USB Host driver} for CH375 supporting \textbf{HID keyboard} and USB flash drive
@@ -127,30 +134,24 @@ Description: Built a microcomputer using PIC18F integrating keyboard, SRAM, UART
   \item Implemented \textbf{DMA mechanism} using 512KB SRAM as disk cache
 \end{itemize}
 
-\section*{Presentation}
-\vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{3pt}
-\begin{itemize}
-  \item HITCON 2025 --- \emph{A Kernel Rootkit That Works Without Kallsyms}\hyperlink{l13}{[13]}
-  \item SITCON 2026 --- \emph{STM32 Bare-metal DOOM Challenge (Up Coming)}\hyperlink{l14}{[14]}
-\end{itemize}
-
 \section*{Links}
 \vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{2pt}
 \begin{enumerate}[label={[\arabic*]},left=0pt,topsep=1pt,itemsep=1pt,parsep=0pt]
   \item \hypertarget{l1}{\href{https://hackmd.io/@rota1001/hitcon-ctf-quals-2025}{\nolinkurl{https://hackmd.io/@rota1001/hitcon-ctf-quals-2025}}}
   \item \hypertarget{l2}{\href{https://hackmd.io/@rota1001/crypto-ctf-2025}{\nolinkurl{https://hackmd.io/@rota1001/crypto-ctf-2025}}}
-  \item \hypertarget{l3}{\href{https://github.com/rota1001/stm32h7-linux}{\nolinkurl{https://github.com/rota1001/stm32h7-linux}}}
-  \item \hypertarget{l4}{\href{https://hackmd.io/@rota1001/stm32h750-linux}{\nolinkurl{https://hackmd.io/@rota1001/stm32h750-linux}}}
-  \item \hypertarget{l5}{\href{https://github.com/rota1001/ksymless}{\nolinkurl{https://github.com/rota1001/ksymless}}}
-  \item \hypertarget{l6}{\href{https://hackmd.io/@sysprog/r1l3i4_Zge}{\nolinkurl{https://hackmd.io/@sysprog/r1l3i4_Zge}}}
-  \item \hypertarget{l7}{\href{https://github.com/rota1001/stm32h7-baremetal-doom}{\nolinkurl{https://github.com/rota1001/stm32h7-baremetal-doom}}}
-  \item \hypertarget{l8}{\href{https://hackmd.io/@rota1001/stm32-doom}{\nolinkurl{https://hackmd.io/@rota1001/stm32-doom}}}
-  \item \hypertarget{l9}{\href{https://github.com/rota1001/arm-os-101}{\nolinkurl{https://github.com/rota1001/arm-os-101}}}
-  \item \hypertarget{l10}{\href{https://hackmd.io/@rota1001/stm32-os}{\nolinkurl{https://hackmd.io/@rota1001/stm32-os}}}
-  \item \hypertarget{l11}{\href{https://github.com/beautiful-fruit/picos}{\nolinkurl{https://github.com/beautiful-fruit/picos}}}
-  \item \hypertarget{l12}{\href{https://hackmd.io/@weiso131/picos}{\nolinkurl{https://hackmd.io/@weiso131/picos}}}
-  \item \hypertarget{l13}{\href{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}{\nolinkurl{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}}}
-  \item \hypertarget{l14}{\href{https://sitcon.org/2026/agenda/91836d}{\nolinkurl{https://sitcon.org/2026/agenda/91836d}}}
+  \item \hypertarget{l3}{\href{https://osselcna2026.sched.com/event/2JQvE/optimize-linux-kernel-to-fit-microcontrollers-with-1-mb-ram-jim-huang-chisheng-chen-national-cheng-kung-university}{\nolinkurl{https://osselcna2026.sched.com/event/2JQvE/optimize-linux-kernel-to-fit-microcontrollers-with-1-mb-ram-jim-huang-chisheng-chen-national-cheng-kung-university}}}
+  \item \hypertarget{l4}{\href{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}{\nolinkurl{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}}}
+  \item \hypertarget{l5}{\href{https://sitcon.org/2026/agenda/91836d}{\nolinkurl{https://sitcon.org/2026/agenda/91836d}}}
+  \item \hypertarget{l6}{\href{https://github.com/rota1001/stm32h7-linux}{\nolinkurl{https://github.com/rota1001/stm32h7-linux}}}
+  \item \hypertarget{l7}{\href{https://hackmd.io/@rota1001/stm32h750-linux}{\nolinkurl{https://hackmd.io/@rota1001/stm32h750-linux}}}
+  \item \hypertarget{l8}{\href{https://github.com/rota1001/stm32f429-linux}{\nolinkurl{https://github.com/rota1001/stm32f429-linux}}}
+  \item \hypertarget{l9}{\href{https://hackmd.io/@rota1001/linux-stm32f429}{\nolinkurl{https://hackmd.io/@rota1001/linux-stm32f429}}}
+  \item \hypertarget{l10}{\href{https://github.com/rota1001/stm32h7-baremetal-doom}{\nolinkurl{https://github.com/rota1001/stm32h7-baremetal-doom}}}
+  \item \hypertarget{l11}{\href{https://hackmd.io/@rota1001/stm32-doom}{\nolinkurl{https://hackmd.io/@rota1001/stm32-doom}}}
+  \item \hypertarget{l12}{\href{https://github.com/rota1001/ksymless}{\nolinkurl{https://github.com/rota1001/ksymless}}}
+  \item \hypertarget{l13}{\href{https://hackmd.io/@sysprog/r1l3i4_Zge}{\nolinkurl{https://hackmd.io/@sysprog/r1l3i4_Zge}}}
+  \item \hypertarget{l14}{\href{https://github.com/beautiful-fruit/picos}{\nolinkurl{https://github.com/beautiful-fruit/picos}}}
+  \item \hypertarget{l15}{\href{https://hackmd.io/@weiso131/picos}{\nolinkurl{https://hackmd.io/@weiso131/picos}}}
 \end{enumerate}
 
 \end{document}
