@@ -40,6 +40,15 @@
   \item Academic Excellence Award (\textbf{1st} x 3, \textbf{Top 5\%} x 4, \textbf{GPA 4.28/4.3})
 \end{itemize}
 
+\section*{Skills}
+\vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-1pt}
+\begin{itemize}
+  \item Languages: C, C++, python
+  \item Linux: Linux Kernel, System Integration (bootloader, libc, rootfs, busybox,...), Driver
+  \item Embedded System: Bare Metal, GDB, QEMU, Protocals (UART, SPI, I2C, PCIe, VGA, ...), Arm Cortex-M
+  \item Server Software: EDK2, DXE/PEI Driver, IPMI, BMC
+\end{itemize}
+
 \section*{Experience}
 \vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-1pt}
 \subsection*{Google Software Engineering Intern - x86 Platform SW Team (Jun 2026 - Sep 2026)}
@@ -48,26 +57,12 @@
   \item Implemented \textbf{DXE and PEI drivers} in EDK2 and IPMI OEM command on \textbf{BMC}
 \end{itemize}
 
-\section*{Competitions}
-\vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-1pt}
-\subsection*{Programming Contests}
-\begin{itemize}
-  \item 2025 ICPC Taichung Regional --- Bronze Medal
-  \item 2024 ICPC Taichung Regional --- Bronze Medal
-\end{itemize}
-
-\subsection*{CTF Contests (Security)}
-\begin{itemize}
-  \item HITCON CTF 2025 Quals --- Ranked 2nd (Taiwan) / Ranked 22nd (Global), write-up\hyperlink{l1}{[1]}
-  \item Crypto CTF 2025 --- Ranked 38th (Solo, Global), write-up\hyperlink{l2}{[2]}
-\end{itemize}
-
 \section*{Presentations}
 \vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{3pt}
 \begin{itemize}
-  \item Embedded Linux Conference North America 2026 --- \emph{Optimize Linux Kernel to Fit Microcontroller with 1MB RAM}\hyperlink{l3}{[3]}
-  \item HITCON 2025 --- \emph{A Kernel Rootkit That Works Without Kallsyms}\hyperlink{l4}{[4]}
-  \item SITCON 2026 --- \emph{STM32 Bare-metal DOOM Challenge}\hyperlink{l5}{[5]}
+  \item Embedded Linux Conference North America 2026 --- \emph{Optimize Linux Kernel to Fit Microcontroller with 1MB RAM}\hyperlink{l1}{[1]}
+  \item HITCON 2025 --- \emph{A Kernel Rootkit That Works Without Kallsyms}\hyperlink{l2}{[2]}
+  \item SITCON 2026 --- \emph{STM32 Bare-metal DOOM Challenge}\hyperlink{l3}{[3]}
 \end{itemize}
 
 \section*{Side Projects}
@@ -76,7 +71,7 @@
 \subsection*{Run Linux 7.0 on STM32H750 (Cortex-M7, no-MMU, 1MiB SRAM)}
 \vspace{1pt}
 Description: Run \textbf{Linux 7.0} on a microcontroller with only \textbf{1MiB SRAM}\\
-{\small\textbf{Links:} Github\hyperlink{l6}{[6]}\ \ Hackmd\hyperlink{l7}{[7]}}
+{\small\textbf{Links:} Github\hyperlink{l4}{[4]}\ \ Hackmd\hyperlink{l5}{[5]}}
 
 \begin{itemize}
   \item Developed a \textbf{QEMU SoC model}, enabling kernel debugging and memory profiling
@@ -88,7 +83,7 @@ Description: Run \textbf{Linux 7.0} on a microcontroller with only \textbf{1MiB 
 \subsection*{A Feature-Rich Linux integration on STM32F429 (Cortex-M4, no-MMU, 8MiB SDRAM)}
 \vspace{1pt}
 Description: Integrate a Linux system capable of running a \textbf{cellphone prototype} with \textbf{8MiB SDRAM} and \textbf{2MiB Flash}\\
-{\small\textbf{Links:} Github\hyperlink{l8}{[8]}\ \ Hackmd\hyperlink{l9}{[9]}}
+{\small\textbf{Links:} Github\hyperlink{l6}{[6]}\ \ Hackmd\hyperlink{l7}{[7]}}
 \begin{itemize}
   \item Integrated a minimal Linux system consisting of a \textbf{bootloader}, \textbf{romfs}, \textbf{rootfs (ext2)}, \textbf{uClibc-ng}, and \textbf{BusyBox}
   \item Tuned kernel configurations to enable \textbf{LCD}, \textbf{MMC}, \textbf{I2C}, and \textbf{SPI} drivers
@@ -100,7 +95,7 @@ Description: Integrate a Linux system capable of running a \textbf{cellphone pro
 \subsection*{Port DOOM to STM32H750 (SITCON 2026)}
 \vspace{1pt}
 Description: Run 3D game on STM32H750 with \textbf{only 1MB SRAM} and \textbf{without STM32 HAL}.\\
-{\small\textbf{Links:} Github\hyperlink{l10}{[10]}\ \ Hackmd\hyperlink{l11}{[11]}}
+{\small\textbf{Links:} Github\hyperlink{l8}{[8]}\ \ Hackmd\hyperlink{l9}{[9]}}
 
 \begin{itemize}
   \item Pure register-level programming using \textbf{MMIO}
@@ -113,7 +108,7 @@ Description: Run 3D game on STM32H750 with \textbf{only 1MB SRAM} and \textbf{wi
 \subsection*{Linux Kernel Instrumentation Framework (HITCON 2025)}
 \vspace{1pt}
 Description: Kernel module for intercepting kernel execution paths \textbf{without kallsyms or kprobes}. Presented at \emph{HITCON 2025}.\\
-{\small\textbf{Links:} Github\hyperlink{l12}{[12]}\ \ Hackmd\hyperlink{l13}{[13]}}
+{\small\textbf{Links:} Github\hyperlink{l10}{[10]}\ \ Hackmd\hyperlink{l11}{[11]}}
 
 \begin{itemize}
   \item Inspected and modified \textbf{procfs} file operations by parsing its internal tree structure
@@ -126,7 +121,7 @@ Description: Kernel module for intercepting kernel execution paths \textbf{witho
 \subsection*{Microcomputer with Custom OS and Peripheral Integration}
 \vspace{1pt}
 Description: Built a microcomputer on the bread board using PIC18F integrating keyboard, SRAM, UART, and USB storage.\\
-{\small\textbf{Links:} Github\hyperlink{l14}{[14]}\ \ Hackmd\hyperlink{l15}{[15]}}
+{\small\textbf{Links:} Github\hyperlink{l12}{[12]}\ \ Hackmd\hyperlink{l13}{[13]}}
 
 \begin{itemize}
   \item Developed \textbf{USB Host driver} for CH375 supporting \textbf{HID keyboard} and USB flash drive
@@ -134,24 +129,38 @@ Description: Built a microcomputer on the bread board using PIC18F integrating k
   \item Implemented \textbf{DMA mechanism} using 512KB SRAM as disk cache
 \end{itemize}
 
+\section*{Competitions}
+\vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{-1pt}
+\subsection*{Programming Contests}
+\begin{itemize}
+  \item 2025 ICPC Taichung Regional --- Bronze Medal
+  \item 2024 ICPC Taichung Regional --- Bronze Medal
+\end{itemize}
+
+\subsection*{CTF Contests (Security)}
+\begin{itemize}
+  \item HITCON CTF 2025 Quals --- Ranked 2nd (Taiwan) / Ranked 22nd (Global), write-up\hyperlink{l14}{[14]}
+  \item Crypto CTF 2025 --- Ranked 38th (Solo, Global), write-up\hyperlink{l15}{[15]}
+\end{itemize}
+
 \section*{Links}
 \vspace{-9pt}\noindent\rule{\linewidth}{0.6pt}\vspace{2pt}
 \begin{enumerate}[label={[\arabic*]},left=0pt,topsep=1pt,itemsep=1pt,parsep=0pt]
-  \item \hypertarget{l1}{\href{https://hackmd.io/@rota1001/hitcon-ctf-quals-2025}{\nolinkurl{https://hackmd.io/@rota1001/hitcon-ctf-quals-2025}}}
-  \item \hypertarget{l2}{\href{https://hackmd.io/@rota1001/crypto-ctf-2025}{\nolinkurl{https://hackmd.io/@rota1001/crypto-ctf-2025}}}
-  \item \hypertarget{l3}{\href{https://osselcna2026.sched.com/event/2JQvE}{\nolinkurl{https://osselcna2026.sched.com/event/2JQvE}}}
-  \item \hypertarget{l4}{\href{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}{\nolinkurl{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}}}
-  \item \hypertarget{l5}{\href{https://sitcon.org/2026/agenda/91836d}{\nolinkurl{https://sitcon.org/2026/agenda/91836d}}}
-  \item \hypertarget{l6}{\href{https://github.com/rota1001/stm32h7-linux}{\nolinkurl{https://github.com/rota1001/stm32h7-linux}}}
-  \item \hypertarget{l7}{\href{https://hackmd.io/@rota1001/stm32h750-linux}{\nolinkurl{https://hackmd.io/@rota1001/stm32h750-linux}}}
-  \item \hypertarget{l8}{\href{https://github.com/rota1001/stm32f429-linux}{\nolinkurl{https://github.com/rota1001/stm32f429-linux}}}
-  \item \hypertarget{l9}{\href{https://hackmd.io/@rota1001/linux-stm32f429}{\nolinkurl{https://hackmd.io/@rota1001/linux-stm32f429}}}
-  \item \hypertarget{l10}{\href{https://github.com/rota1001/stm32h7-baremetal-doom}{\nolinkurl{https://github.com/rota1001/stm32h7-baremetal-doom}}}
-  \item \hypertarget{l11}{\href{https://hackmd.io/@rota1001/stm32-doom}{\nolinkurl{https://hackmd.io/@rota1001/stm32-doom}}}
-  \item \hypertarget{l12}{\href{https://github.com/rota1001/ksymless}{\nolinkurl{https://github.com/rota1001/ksymless}}}
-  \item \hypertarget{l13}{\href{https://hackmd.io/@sysprog/r1l3i4_Zge}{\nolinkurl{https://hackmd.io/@sysprog/r1l3i4_Zge}}}
-  \item \hypertarget{l14}{\href{https://github.com/beautiful-fruit/picos}{\nolinkurl{https://github.com/beautiful-fruit/picos}}}
-  \item \hypertarget{l15}{\href{https://hackmd.io/@weiso131/picos}{\nolinkurl{https://hackmd.io/@weiso131/picos}}}
+  \item \hypertarget{l1}{\href{https://osselcna2026.sched.com/event/2JQvE}{\nolinkurl{https://osselcna2026.sched.com/event/2JQvE}}}
+  \item \hypertarget{l2}{\href{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}{\nolinkurl{https://hitcon.org/2025/en-US/agenda/f679c826-4c37-4989-bf27-6e44ea4726ce/}}}
+  \item \hypertarget{l3}{\href{https://sitcon.org/2026/agenda/91836d}{\nolinkurl{https://sitcon.org/2026/agenda/91836d}}}
+  \item \hypertarget{l4}{\href{https://github.com/rota1001/stm32h7-linux}{\nolinkurl{https://github.com/rota1001/stm32h7-linux}}}
+  \item \hypertarget{l5}{\href{https://hackmd.io/@rota1001/stm32h750-linux}{\nolinkurl{https://hackmd.io/@rota1001/stm32h750-linux}}}
+  \item \hypertarget{l6}{\href{https://github.com/rota1001/stm32f429-linux}{\nolinkurl{https://github.com/rota1001/stm32f429-linux}}}
+  \item \hypertarget{l7}{\href{https://hackmd.io/@rota1001/linux-stm32f429}{\nolinkurl{https://hackmd.io/@rota1001/linux-stm32f429}}}
+  \item \hypertarget{l8}{\href{https://github.com/rota1001/stm32h7-baremetal-doom}{\nolinkurl{https://github.com/rota1001/stm32h7-baremetal-doom}}}
+  \item \hypertarget{l9}{\href{https://hackmd.io/@rota1001/stm32-doom}{\nolinkurl{https://hackmd.io/@rota1001/stm32-doom}}}
+  \item \hypertarget{l10}{\href{https://github.com/rota1001/ksymless}{\nolinkurl{https://github.com/rota1001/ksymless}}}
+  \item \hypertarget{l11}{\href{https://hackmd.io/@sysprog/r1l3i4_Zge}{\nolinkurl{https://hackmd.io/@sysprog/r1l3i4_Zge}}}
+  \item \hypertarget{l12}{\href{https://github.com/beautiful-fruit/picos}{\nolinkurl{https://github.com/beautiful-fruit/picos}}}
+  \item \hypertarget{l13}{\href{https://hackmd.io/@weiso131/picos}{\nolinkurl{https://hackmd.io/@weiso131/picos}}}
+  \item \hypertarget{l14}{\href{https://hackmd.io/@rota1001/hitcon-ctf-quals-2025}{\nolinkurl{https://hackmd.io/@rota1001/hitcon-ctf-quals-2025}}}
+  \item \hypertarget{l15}{\href{https://hackmd.io/@rota1001/crypto-ctf-2025}{\nolinkurl{https://hackmd.io/@rota1001/crypto-ctf-2025}}}
 \end{enumerate}
 
 \end{document}
